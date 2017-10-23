@@ -21,7 +21,6 @@ Return : file descriptor if OK, - on error
   * O_RDONLY: 읽기 전용  
   * O_WRONLY: 쓰기 전용  
   * O_RDWR: 읽기, 쓰기 가능  
-    
   * O_APPEND: 모든 쓰기 작업은 파일의 끝에서 수행된다.  
   * O_CREAT: 파일이 없을 경우 파일 생성  
   * O_DIRECT: 직접 입출력 수행 위해 파일을 연다.  
