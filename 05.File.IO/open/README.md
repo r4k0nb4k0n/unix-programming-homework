@@ -13,5 +13,5 @@ int open ( const char *pathname, int oflag, mode_t mode);
 Return : file descriptor if OK, - on error
 
 ## Screenshots
-![Alt text](/open_1.fail.jpg?raw=true "open_1.fail")
-![Alt text](/open_1.success.jpg?raw=true "open_1.success")
+![open_1.fail](./open_1.fail.jpg?raw=true "open_1.fail")
+![open_1.success](./open_1.success.jpg?raw=true "open_1.success")
