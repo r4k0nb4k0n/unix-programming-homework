@@ -21,4 +21,7 @@ Return: new file offset if OK, -1 on error
 		* 파일을 처음부터 byte 단위로 계산한 정수값  
 		* 기본적으로 파일이 열리면 offset의 위치는 0(O_APPEND 예외)  
 		* **파일의 크기보다 큰 값으로 설정하면?**
-
+## Screenshots
+![lseek_1.success](./lseek_1.success.png?raw=true "lseek_1.success")  
+파일의 offset을 파일의 크기(0 byte)보다 큰 값인 5로 설정해본 결과:  
+![lseek_1.offset](./lseek_1.offset.png?raw=true "lseek_1.offset")
