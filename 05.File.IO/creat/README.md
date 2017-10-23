@@ -21,3 +21,5 @@ Return : file descriptor if OK, -1 on error
 **umask shell command로 현재 umask 확인 가능**  
 **default umask 값은 /etc/bashrc에서 확인 가능**   
 
+## Screenshots
+![creat_1.success](./creat_1.success.png?raw=true "creat_1.success")
