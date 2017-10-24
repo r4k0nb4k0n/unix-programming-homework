@@ -23,8 +23,8 @@ Return: number of bytes read. 0 if end of file, -1 on error.
 
 ## Screenshots
 read_1  
-![read_1.success](./read_1.success.png?raw=true "read_1.success")
+![read_1.success](./read_1.success.png?raw=true "read_1.success")  
 read_2.multiplebytes  
-![read_2.success](./read_2.success.png?raw=true "read_2.success")
+![read_2.success](./read_2.success.png?raw=true "read_2.success")  
 read_3.nonblocking  
-![read_3.nonblocking](./read_3.nonblocking.png?raw=true "read_3.nonblocking")
+![read_3.nonblocking](./read_3.nonblocking.png?raw=true "read_3.nonblocking")  
