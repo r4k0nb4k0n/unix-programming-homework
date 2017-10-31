@@ -15,3 +15,5 @@ FD_ZERO(fd_set, *set);
 ```
 ## RETURN VALUE
 Return: number of fds ready for I/O, 0 if timeout, -1 if error
+## Screenshot
+![select](./select.png?raw=true "select")
