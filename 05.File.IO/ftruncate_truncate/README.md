@@ -11,3 +11,5 @@ int truncate(const char *path, off_t len);
 ```
 ## RETURN VALUE
 Return: 0 if OK, -1 if error
+## Screenshot
+![truncate](./truncate.png?raw=true "truncate.png")
