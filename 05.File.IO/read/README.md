@@ -21,12 +21,16 @@ Return: number of bytes read. 0 if end of file, -1 on error.
     * 리턴 안됨 -> 읽을 데이터가 없음 (디바이스 파일의 경우 데이터가 입력될 때까지 프로세스 중단)  
     * -1 -> errno가 EINTR이나 EAGAIN이 아닌 다른 값. 심각한 오류.  
 ## Screenshots
-read_1  
+* read_1  
 ![read_1.success](./read_1.success.png?raw=true "read_1.success")  
-read_1.multiplebytes  
+* read_1.multiplebytes  
 ![read_2.success](./read_1.multibytes.png?raw=true "read_1.multibytes")  
-read_1.nonblocking  
+* read_1.nonblocking  
 ![read_1.nonblocking](./read_1.nonblocking.png?raw=true "read_1.nonblocking")  
 ## Process vs. File Descriptor (1)
 * 한 Process가 동일 파일을 2번 open하여 read?  
- * 
+  * read_2.c  
+  ![pvsfd_1.png](./pvsfd_1.png?raw=true "pvsfd_1.png")  
+* 서로 다른 Process가 동일 파일을 open하여 read???  
+  * read_3.c  
+  ![pvsfd_2.png](./pvsfd_2.png?raw=true "pvsfd_2.png")  
