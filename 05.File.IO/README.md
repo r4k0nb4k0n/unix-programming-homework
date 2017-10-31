@@ -45,12 +45,12 @@ System Call I/O
 ##### Page Cache
 * Locality of reference  
   * Spatial locality  
-    * 현재 참조되는 자원과 인접한 곳에서 참조가 발생할 확률이 높음  
-  * Temporal locality  
-    * 특점 시점에서 자원에 접근되면 그 자원은 다시 참조될 확률이 높음  
+    * 현재 참조되는 자원과 인접한 곳에서 참조가 발생할 확률이 높음
+  * Temporal locality  
+  	* 특점 시점에서 자원에 접근되면 그 자원은 다시 참조될 확률이 높음  
     ```
-    int num[10000], sum = 0, i;  
-    .....  
+	int num[10000], sum = 0, i;  
+   	.....  
     for(i=0;i<10000;i++)  
         sum += num[i];  
     .....  
