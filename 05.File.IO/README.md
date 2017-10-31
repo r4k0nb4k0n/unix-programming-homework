@@ -43,11 +43,11 @@ System Call I/O
   * 모든 파일 시스템은 동일한 개념, 동일한 인터페이스, 동일한 호출 지원  
   * 새로운 파일 시스템을 개발하더라도 리눅스에서 쉽게 사용 가능
 ##### Page Cache
-* Locality of reference
-  * Spatial locality
-    * 현재 참조되는 자원과 인접한 곳에서 참조가 발생할 확률이 높음
-  * Temporal locality
-    * 특점 시점에서 자원에 접근되면 그 자원은 다시 참조될 확률이 높음
+* Locality of reference  
+  * Spatial locality  
+    * 현재 참조되는 자원과 인접한 곳에서 참조가 발생할 확률이 높음  
+  * Temporal locality  
+    * 특점 시점에서 자원에 접근되면 그 자원은 다시 참조될 확률이 높음  
     ```
     int num[10000], sum = 0, i;  
     .....  
