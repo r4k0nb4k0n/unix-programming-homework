@@ -27,7 +27,7 @@ Return: Not MAP_FAILED if OK, MAP_FAILED on error
 * fd
   * 매핑될 파일의 디스크립터
 * offset
-  * 매핑될 파일의 시작 위치
+  * 매핑될 파일의 시작 위치  
 ![mmap](./mmap.png?raw=true "mmap")  
 * Page Size
   * Page
