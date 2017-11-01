@@ -28,5 +28,18 @@
 	* Unbuffered
 		* App과 파일 사이에 버퍼를 사용하지 않음
 		* 예: 표준 에러(stderr)
-### 여러 함수들
-
+### 파일 입출력 함수들
+* [fopen](./fopen "fopen")
+* [freopen, fdopen](./freopen_fdopen "freopen, fdopen")
+* [fclose](./fclose "fclose")
+### 입출력 함수의 종류
+* 문자 단위 입출력
+	* [getc, fgetc, getchar](./getc_fgetc_getchar "getc, fgetc, getchar")
+	* [ungetc](./ungetc "ungetc")
+	* [putc, fputc, putchar](./putc_fputc_putchar "putc, fputc, putchar")
+* 줄단위 입출력
+	* gets(), fgets(), puts(), fputs()
+* Binary 입출력
+	* fread(), fwrite()
+* 형식화된 입출력
+	* scanf(), fscanf(), printf(), fprintf()
