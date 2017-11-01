@@ -18,4 +18,4 @@ Return : number of objects read or written
 * 구조체에 대한 입출력
 ## Screenshot
 * fread_fwrite  
-![fread_fwrite](./fread_fwrite "fread, fwrite")
+![fread_fwrite](./fread_fwrite?raw=true "fread, fwrite")
