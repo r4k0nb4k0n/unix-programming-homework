@@ -18,4 +18,6 @@ Return : nonnegative value if OK, EOF on error
 * puts
 	* NULL로 끝나는 문자열을 표준출력(stdout)에 씀(NULL 제외)
 	* newline을 추가
-
+## Screenshot
+* fgets_fputs  
+![fgets_fputs](./fgets_fputs.png?raw=true "fgets_fputs")
