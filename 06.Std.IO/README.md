@@ -69,7 +69,7 @@
 			* _IOLBF: Line buffered
 			* _IONBF: Unbuffered
 	* size - 사용될 버퍼의 크기
-	* 버퍼링의 타입을 결정할 수 있고 buf의 크기를 정의할 수 있어 setbuf()보다 융통성 있음
+	* 버퍼링의 타입을 결정할 수 있고 buf의 크기를 정의할 수 있어 setbuf()보다 융통성 있음  
 [setbuf & setvbuf functions](./setbuf_setvbuf "setbuf & setvbuf functions")
 ### File locking for multi-thread programming
 [file lock](./flockfile_funlockfile_ftrylockfile "file_lock")
