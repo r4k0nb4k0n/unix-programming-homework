@@ -26,4 +26,7 @@ int main(void){
 	if(!fread(&p, sizeof(struct pirate), 1, in)){
 		perror("fread"); return 1;
 	}
-
+	if(fclose(in)) return 1; /* perror("fclose") */
+	printf("name =\"%s\" booty = %lu, beard_len = %u\n", p.name, p.booty, p.beard_len);
+	return 0;
+}
