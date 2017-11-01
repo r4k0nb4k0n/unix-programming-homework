@@ -19,5 +19,5 @@ Return : nonzero if condition is true, 0 otherwise
 * feof()는 _flags 필드에서 _IOEOF, ferror()는 _IOERR 비트가 설정되어 있는지 검사
 * clearerr 함수는 _flags 필드의 _IOEOF, _IOERR비트를 리셋
 ## Screenshot
-* feof_1
+* feof_1  
 ![feof_1](./feof_1.png?raw=true "feof_1")
