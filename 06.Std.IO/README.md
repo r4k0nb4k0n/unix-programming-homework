@@ -51,3 +51,23 @@
 		* 예: 표준 에러(stderr)
 ### Buffer Flushing
 * [fflush](./fflush "fflush")
+### 표준 I/O Library Buffering
+* Description
+	* setbuf
+		* fp - 파일 포인터
+		* buf - fp가 사용할 버퍼의 포인터
+			* buf가 NULL -> 버퍼를 사용하지 않는다는 뜻
+			* buf가 !NULL -> 시스템이 할당한 버퍼는 해제되고 프로그램에서 정의한 BUFSIZE(1024)만큼의 char 배열을 버퍼로 사용
+	* 이때의 버퍼 사용법은 line buffered
+	* setvbuf
+		* fp - 파일 포인터
+		* buf - fp가 사용할 버퍼의 포인터
+			* NULL이 아니면, size 만큼의 사용자 공간 
+			* NULL이면 라이브러리 함수에서 적당한 크기 할당
+		* mode
+			* _IOFBF: Fully buffered
+			* _IOLBF: Line buffered
+			* _IONBF: Unbuffered
+	* size - 사용될 버퍼의 크기
+	* 버퍼링의 타입을 결정할 수 있고 buf의 크기를 정의할 수 있어 setbuf()보다 융통성 있음
+[setbuf & setvbuf functions](./setbuf_setvbuf "setbuf & setvbuf functions")
