@@ -21,3 +21,6 @@ Return : buf if OK, NULL on end of file or error
 	* newline을 NULL로 대체하여 읽음
 	* 버퍼의 크기를 사용자가 지정하지 못하기 때문에 문제의 소지 발생 가능
 		* BOF(Buffer Overflow)
+## Screenshot
+* fputs_fgets  
+![fputs_fgets](./fputs_fgets.png?raw=true "fputs_fgets")
