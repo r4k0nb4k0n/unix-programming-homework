@@ -17,3 +17,6 @@ Return : c if OK, EOF on error
 * 특정 조건을 검사하기 위해 하나의 문자를 읽은 후 원래의 상태로 복원하기 위해 이용
 	* 같은 문자일 필요는 없음
 * EOF 문자를 되돌릴 수는 없으나 EOF를 만난 경우 새로운 문자를 되돌릴 수는 있다
+## Screenshot
+* ungetc_1  
+![ungetc_1](./ungetc_1.png "ungetc_1")
