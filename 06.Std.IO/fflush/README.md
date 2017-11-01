@@ -12,3 +12,6 @@ Return : 0 if OK, EOF on error
 * fp - 파일 포인터
 * 라이브러리 버퍼의 내용을 해당 파일에 즉시 쓰게 하는 역할
 * prompt처럼 '₩n'이 없는 문자열을 즉각 출력시키는데 유용
+## Screenshot
+* fflush_1  
+![fflush_1](./fflush_1.png?raw=true "fflush_1")
