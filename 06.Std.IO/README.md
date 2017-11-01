@@ -38,7 +38,8 @@
 	* [ungetc](./ungetc "ungetc")
 	* [putc, fputc, putchar](./putc_fputc_putchar "putc, fputc, putchar")
 * 줄단위 입출력
-	* gets(), fgets(), puts(), fputs()
+	* [gets, fgets](./gets_fgets "gets, fgets")
+	* [puts, fputs](./puts_fputs "puts, fputs")
 * Binary 입출력
 	* fread(), fwrite()
 * 형식화된 입출력
