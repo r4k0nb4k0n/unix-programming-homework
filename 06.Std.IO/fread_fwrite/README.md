@@ -15,4 +15,7 @@ Return : number of objects read or written
 * nobj - 입출력을 수행할 객체 수
 * fp - 파일 포인터
 * 이진 배열에 대한 입출력
-* 구조체에 대한 
+* 구조체에 대한 입출력
+## Screenshot
+* fread_fwrite  
+![fread_fwrite](./fread_fwrite.png?raw=true "fread, fwrite")

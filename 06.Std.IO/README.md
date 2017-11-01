@@ -16,18 +16,6 @@
 		* 표준 에러: stderr
 	* FILE Structure (/usr/include/libio.h에 정의)
 ![FILE_structure](./FILE_structure.png?raw=true "FILE_structure")
-### 표준 I/O Buffering
-* 목적
-	* 파일 접근 횟수와 내부 시스템 접근 횟수를 최소화
-* 종류
-	* Fully buffered
-		* 버퍼가 꽉 찬 경우에만 실질적인 입출력이 일어남
-	* Line buffered
-		* '\n' 문자에 의해 입출력이 발생
-		* 예: 표준입력(stdin), 표준출력(stdout)
-	* Unbuffered
-		* App과 파일 사이에 버퍼를 사용하지 않음
-		* 예: 표준 에러(stderr)
 ### 파일 입출력 함수들
 * [fopen](./fopen "fopen")
 * [freopen, fdopen](./freopen_fdopen "freopen, fdopen")
@@ -41,6 +29,25 @@
 	* [gets, fgets](./gets_fgets "gets, fgets")
 	* [puts, fputs](./puts_fputs "puts, fputs")
 * Binary 입출력
-	* fread(), fwrite()
+	* [fread, fwrite](./fread_fwrite "fread, fwrite")
 * 형식화된 입출력
 	* scanf(), fscanf(), printf(), fprintf()
+### Positioning a Stream
+* [ftell, fseek, rewind](./ftell_fseek_rewind "ftell, fseek, rewind")
+* [fsetpos_fgetpos](./fsetpos_fgetpos "fsetpos, fgetpos")
+### Error Check
+* [ferror, feof, clearerr](./ferror_feof_clearerr "ferror, feof, clearerr")
+### 표준 I/O Buffering
+* 목적
+	* 파일 접근 횟수와 내부 시스템 접근 횟수를 최소화
+* 종류
+	* Fully buffered
+		* 버퍼가 꽉 찬 경우에만 실질적인 입출력이 일어남
+	* Line buffered
+		* '\n' 문자에 의해 입출력이 발생
+		* 예: 표준입력(stdin), 표준출력(stdout)
+	* Unbuffered
+		* App과 파일 사이에 버퍼를 사용하지 않음
+		* 예: 표준 에러(stderr)
+### Buffer Flushing
+* [fflush](./fflush "fflush")
