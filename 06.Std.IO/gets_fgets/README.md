@@ -23,4 +23,4 @@ Return : buf if OK, NULL on end of file or error
 		* BOF(Buffer Overflow)
 ## Screenshot
 * fgets_fputs  
-![fgets_fputs](./fputs_fgets.png?raw=true "fgets_fputs")
+![fgets_fputs](./fgets_fputs.png?raw=true "fgets_fputs")
