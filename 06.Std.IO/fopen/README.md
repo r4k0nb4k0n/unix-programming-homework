@@ -20,7 +20,7 @@ Return : file pointer if OK, NULL on error
 * File 구조체와 버퍼를 할당하며 FILE 구조체 내부의 각 필드들을 초기화한 후에 open을 호출하여 file descriptor를 얻음
 * 파일이 새로 생성되는 경우 0666의 permission (umask로 조정)
 ## Screenshots
-* fopen_success.png
+* fopen_success.png  
 ![fopen_success](./fopen_success.png?raw=true "fopen_success")
-* fopen_fail.png
+* fopen_fail.png  
 ![fopen_fail](./fopen_fail.png?raw=true "fopen_fail")
