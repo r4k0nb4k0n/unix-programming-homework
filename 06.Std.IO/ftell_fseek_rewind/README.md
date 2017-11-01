@@ -22,4 +22,10 @@ Return :
 		* SEEK_SET, SEEK_CUR, SEEK_END
 * rewind
 	* 파일의 offset을 처음으로 이동
-
+## Screenshots
+* ftell_1  
+![ftell_1](./ftell_1.png?raw=true "ftell_1")
+* fseek_1  
+![fseek_1](./fseek_1.png?raw=true "fseek_1")
+* rewind  
+![rewind_1](./rewind_1.png?raw=true "rewind_1")
