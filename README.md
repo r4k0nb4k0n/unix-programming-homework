@@ -1,2 +1,6 @@
 # unix-programming-homework
 Univ. of Seoul, Dept. of CSE, 2017-2 Unix Programming Practice and Homework
+## Index
+* [05.File.IO](./05.File.IO)
+* [06.Std.IO](./06.Std.IO)
+* [07.Advanced.IO](./07.Advanced.IO)
