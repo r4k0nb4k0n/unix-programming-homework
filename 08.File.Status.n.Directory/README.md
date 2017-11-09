@@ -58,4 +58,36 @@
 * 스티키 비트 (Sticky Bit)
 * 파일의 시간 정보
 ## File Status
-[stat_fstat_lstat](./stat_fstat_lstat)
+* [stat_fstat_lstat](./stat_fstat_lstat)
+
+## 리눅스 디렉토리의 구조
+* 디렉토리의 데이터
+* 디렉토리 엔트리
+## Link
+* 이미 존재하는 파일이나 디렉토리의 연결을 의미
+	* Windows의 단축 아이콘과 유사한 개념
+* 링크의 두 가지 종류
+	* 하드 링크 (Hard link)
+	* 심볼릭 또는 소프트 링크 (Symbolic or soft link)
+## Hard Link
+
+## Hard Link vs. Symbolic Link
+* Hard link
+	* 장점
+		* 파일로의 빠른 접근 가능
+			* 디렉토리 엔트리 읽기 한번
+			* 아이노드 읽기 한번
+			* 데이터 블록 읽기 한번
+	* 단점
+		* 서로 다른 파일시스템 사이의 링크 불능
+		* 디렉토리 링크 시 chain 발생 가능
+		* 파일의 삭제를 보장할 수 없음
+* Symbolic Link
+	* Hard link의 단점을 모두 보완
+	* 단점
+		* 파일로 접근 시 상대적으로 많은 읽기 연산 필요
+			* 디렉토리 엔트리 읽기 두번
+			* 아이노드 읽기 두번
+			* 데이터 블록 읽기 두번
+## Link functions
+
