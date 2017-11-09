@@ -50,4 +50,12 @@
 	```
 * 파일 접근 허가 모드 (permission)
 	* 파일의 permission
-	
+	* 디렉토리 permission
+		* Read : 디렉토리 안에 들어있는 파일의 이름을 읽을 수 있도록 함
+		* Write : 디렉토리에 파일을 생성, 제거할 수 있도록 함
+		* Execution : 해당 디렉토리 이하에 있는 파일을 접근하는 통로를 열어주는 역할
+* effective user id, effective group id
+* 스티키 비트 (Sticky Bit)
+* 파일의 시간 정보
+## File Status
+[stat_fstat_lstat](./stat_fstat_lstat)
