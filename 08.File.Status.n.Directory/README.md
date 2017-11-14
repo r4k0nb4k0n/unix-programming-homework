@@ -103,7 +103,7 @@
 		* link(), chmod(), write() 호출
 ## File Status
 * [stat_fstat_lstat](./stat_fstat_lstat)
-
+* [access](./access)
 ## 리눅스 디렉토리의 구조
 * 디렉토리의 데이터
 * 디렉토리 엔트리
