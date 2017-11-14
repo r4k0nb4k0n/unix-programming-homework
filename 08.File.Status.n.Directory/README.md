@@ -49,7 +49,7 @@
 	S_ISSOCK(mode) : 소켓
 	```
 * 파일 접근 허가 모드 (permission)
-	* 파일의 permission
+	* 파일의 permission  
 	| st_mode mask | Meaning |  
 	|--------------|---------|  
 	|S_IRUSR|user_read|  
