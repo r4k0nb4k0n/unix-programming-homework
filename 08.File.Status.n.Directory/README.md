@@ -108,6 +108,8 @@
 * [umask](./umask)
 ## Change Permission
 * [chmod, fchmod](./chmod_fchmod)
+## File Truncation
+* [truncate, ftruncate](./truncate_ftruncate)
 ## 리눅스 디렉토리의 구조
 * 디렉토리의 데이터
 * 디렉토리 엔트리
