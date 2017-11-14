@@ -50,27 +50,57 @@
 	```
 * 파일 접근 허가 모드 (permission)
 	* 파일의 permission
-	| st_mode mask | Meaning |
-	|--------------|---------|
-	|S_IRUSR|user_read|
-	|S_IWUSR|user_write|
-	|S_IXUSR|user_execute|
-	|--------------|---------|
-	|S_IRGRP|group_read|
-	|S_IWGRP|group_write|
-	|S_IXGRP|group_execute|
-	|--------------|---------|
-	|S_IROTH|other_read|
-	|S_IWOTH|other_write|
-	|S_IXOTH|other_execute|
-	
+	| st_mode mask | Meaning |  
+	|--------------|---------|  
+	|S_IRUSR|user_read|  
+	|S_IWUSR|user_write|  
+	|S_IXUSR|user_execute|  
+	|--------------|---------|  
+	|S_IRGRP|group_read|  
+	|S_IWGRP|group_write|  
+	|S_IXGRP|group_execute|  
+	|--------------|---------|  
+	|S_IROTH|other_read|  
+	|S_IWOTH|other_write|  
+	|S_IXOTH|other_execute|  
 	* 디렉토리 permission
 		* Read : 디렉토리 안에 들어있는 파일의 이름을 읽을 수 있도록 함
 		* Write : 디렉토리에 파일을 생성, 제거할 수 있도록 함
 		* Execution : 해당 디렉토리 이하에 있는 파일을 접근하는 통로를 열어주는 역할
 * effective user id, effective group id
+	* Real user ID, real group ID
+		* 프로세스를 실제로 실행시키고 있는 사용자의 ID
+		* 로그인할 때 사용된 ID
+	* Effective user ID, effective group ID
+		* 파일에 대한 접근 권한을 결정
+	* set-user-ID, set-group-ID 비트
+		* 프로세스 실행 시, effective user ID값이 프로세스를 실행한 사용자의 ID(real user id)가 아니라 파일의 소유자 ID로 설정
+		* S_ISUID, S_ISGID
+	* 일반적인 프로그램 실행 시
+		* Real user ID -> effective user ID
+		* Real group ID -> effective group ID
+	* 프로그램에 set-user-ID(S_ISUID), set_group-ID(S_ISGID) 비트 설정 시
+		* file owner ID -> effective user ID
+		* find group owner ID -> effective group ID
+	* stat 구조체의 st_mode값과 AND 연산을 통해 비트 설정의 유무 확인 가능
+		* S_ISUID(4), S_ISGID(4)
+	* 보안에 유의 필요!
 * 스티키 비트 (Sticky Bit)
+	* 파일이 존재하는 디렉토리에 접근 권한이 있다 해도 파일 삭제는 파일의 소유자만 할 수 있도록 함
+	* 공동 작업 디렉토리에서 여러 사용자가 작업할 경우 다른 사용자에 의해 파일이 삭제되는 것을 방지
+	* S_ISVTX(1)
 * 파일의 시간 정보
+	* stat 구조체의 멤버 중에는 시간 값을 가지는 세 개의 멤버가 있음
+	* 파일의 관리 및 보안에 이러한 시간 정보들이 유용하게 사용될 수 있음
+	* st_atime
+		* 파일의 데이터가 마지막으로 읽혔던 시간
+		* read() 호출
+	* st_mtime
+		* 파일의 데이터가 마지막으로 변경된 시간
+		* write() 호출
+	* st_ctime
+		* 파일의 stat 구조의 내용이 마지막으로 변경된 시간
+		* link(), chmod(), write() 호출
 ## File Status
 * [stat_fstat_lstat](./stat_fstat_lstat)
 
