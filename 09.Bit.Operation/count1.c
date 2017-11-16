@@ -1,3 +1,5 @@
+// unsigned integer 변수 안에 존재하는 비트 중 (32 bit) 1인 비트의 개수 세기
+
 #include <stdio.h>
 
 int count_bit(unsigned int num){
