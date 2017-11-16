@@ -5,3 +5,5 @@ Univ. of Seoul, Dept. of CSE, 2017-2 Unix Programming Practice and Homework
 * [06.Std.IO](./06.Std.IO)
 * [07.Advanced.IO](./07.Advanced.IO)
 * [08.File.Status.n.Directory](./08.File.Status.n.Directory)
+* [09.Bit.Operation](./09.Bit.Operation)
+* [10.Process.Management](./10.Process.Management)
