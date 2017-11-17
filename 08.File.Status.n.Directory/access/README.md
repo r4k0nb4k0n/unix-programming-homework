@@ -12,11 +12,6 @@ Return : 0 if OK, -1 on error
 * access
 	* pathname : 파일 경로 이름
 	* mode : 검사하고자 하는 permission 값  
-	| mode | Description |
-	|------|-------------|
-	|R_OK  |test for read permission|
-	|W_OK  |test for write permission|
-	|X_OK  |test for execute permission|
-	|F_OK  |test for existence permission|
+	![access_mode](./access_mode.png?raw=true)
 	* real user ID와 real group ID에 대한 permission check
 
