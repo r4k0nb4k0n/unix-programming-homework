@@ -50,19 +50,7 @@
 	```
 * 파일 접근 허가 모드 (permission)
 	* 파일의 permission  
-	| st_mode mask | Meaning |  
-	|--------------|---------|  
-	|S_IRUSR|user_read|  
-	|S_IWUSR|user_write|  
-	|S_IXUSR|user_execute|  
-	|--------------|---------|  
-	|S_IRGRP|group_read|  
-	|S_IWGRP|group_write|  
-	|S_IXGRP|group_execute|  
-	|--------------|---------|  
-	|S_IROTH|other_read|  
-	|S_IWOTH|other_write|  
-	|S_IXOTH|other_execute|  
+	![st_mode_mask_table](./st_mode_mask_table.png?raw=true)  
 	* 디렉토리 permission
 		* Read : 디렉토리 안에 들어있는 파일의 이름을 읽을 수 있도록 함
 		* Write : 디렉토리에 파일을 생성, 제거할 수 있도록 함
