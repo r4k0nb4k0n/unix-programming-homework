@@ -105,16 +105,17 @@
   * 자신이 가지고 있는 파이리나 디렉토리의 목록
   * 이러한 목록 각각을 디렉토리 엔트리(Directory entry)라고 부름
   * 모든 디렉토리는 기본적으로 .과 ..의 디렉토리 엔트리를 자동으로 가짐
-* 디렉토리 엔트리
+  * 디렉토리 엔트리
   * 파일 혹은 디렉토리의 이름과 inode 번호로 구성
+  ![linux_directory_structure](./linux_directory_structure.png?raw=true)
 ## Link
 * 이미 존재하는 파일이나 디렉토리의 연결을 의미
 	* Windows의 단축 아이콘과 유사한 개념
 * 링크의 두 가지 종류
-	* 하드 링크 (Hard link)
-	* 심볼릭 또는 소프트 링크 (Symbolic or soft link)
-## Hard Link
-
+	* 하드 링크 (Hard link)  
+  ![hard_link](./hard_link.png?raw=true)
+	* 심볼릭 또는 소프트 링크 (Symbolic or soft link)  
+  ![symbolic_link](./symbolic_link.png?raw=true)
 ## Hard Link vs. Symbolic Link
 * Hard link
 	* 장점
