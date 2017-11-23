@@ -33,9 +33,39 @@
 * 리눅스 2.6에서는 `O(1)` 스케줄러 사용
 ## Process 상태 전이
 * 프로세스 상태의 분류
+	* 사용자 모드(user mode)에서 수행중인 상태
+	* 커널 모드(kernel mode)에서 수행중인 상태
+	* 수행 대기 상태
+	* 수면(sleeping) 상태
 * 프로세스 상태의 전이
+	* CPU를 시간분할에 따라 프로세스에 할당
+	* 프로세스들은 위에 언급된 상태를 이동하며 실행
 * 프로세스 상태 전이도
+![process-status-tree](./process_status_tree.png?raw=true)
 ## Process 구조
 * 프로세스에 필요한 자료구조
+![process-data-structure](./process_data_structure.png?raw=true)
 * 사용자 구조 (user structure, U-area)
+	* 프로세스의 상태를 기술
+	* 수행중인 프로세스가 접근해야 하는 필드를 가짐
+
 * 프로세스 테이블 (Process Table)
+	* 프로세스의 상태를 기술
+
+## 프로세스 관련 함수들
+* 프로세스 식별자(Process ID)
+	* [getpid](./getpid)
+	* [setuid, setgid, seteuid, setegid](./set_id)
+* 실행 이미지 대체 및 프로세스의 생성
+	* 실행 이미지
+		* 프로세스가 실행될 때 수행하는 코드 및 이와 관련된 자료구조를 의미
+	* 실행 이미지 대체
+		* 현재 실행중인 프로세스의 실행이미지를 대체하는 과정
+		* exec 계열의 함수를 이용
+			* `execl()`, `execlp()`, `execvp()`, `execv()`, `execle()`, `execve()`
+	* 프로세스의 생성
+		* `fork()`, `vfork()`
+	* 보통 새로운 프로그램을 실행시킬 때
+		* [fork()](./fork)를 통해 프로세스를 생성하고 [exec()](./exec)을 통해 실행 이미지를 대체
+
+
