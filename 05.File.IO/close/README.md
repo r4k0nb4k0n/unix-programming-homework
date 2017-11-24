@@ -1,8 +1,8 @@
 # close function
 ## NAME
-close - close a file descriptor
+`close` - close a file descriptor
 ## SYNOPSIS
-```
+```c
 #include <unistd.h>
 int close(int fd);
 ```
