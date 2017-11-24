@@ -16,4 +16,4 @@
     * ex) `set_flag(&flag, OPEN | WRITE | CLOSE);`
   * `print_flag(&unsigned int flag)`
     * `flag`에 설정되어있는 옵션들을 출력
-* ![practice_1.c](./practice_1.c?raw=true)
+* [practice_1.c](./practice_1.c)
