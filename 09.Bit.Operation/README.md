@@ -4,9 +4,7 @@
 * 비트 연산
 * 쉬프트 연산
 ## 비트 연산 예제1
-```c
-![count1.c](./count1.c?raw=true)
-```
+* [count1.c](./count1.c)
 ## [비트 연산 실습 1](./practice_1)
 ## [비트 연산 실습 2](./practice_2)
 ## [비트 연산 실습 3](./practice_3)
