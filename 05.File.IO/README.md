@@ -3,10 +3,10 @@ System Call I/O
 
 ### 리눅스 파일의 허가 모드
 ![ls](./ls.png?raw=true "ls")  
-* USER/GROUP/OTHER로 권한이 나뉨  
-	* r: 읽기 권한  
-	* w: 쓰기 권한  
-	* x: 실행 권한  
+* `USER/GROUP/OTHER`로 권한이 나뉨  
+	* `r`: 읽기 권한  
+	* `w`: 쓰기 권한  
+	* `x`: 실행 권한  
 
 ### System Call vs. Standard Library
 ![system_call](./system_call.png?raw=true "system_call")
@@ -48,7 +48,7 @@ System Call I/O
 		* 현재 참조되는 자원과 인접한 곳에서 참조가 발생할 확률이 높음
 	* Temporal locality  
 		* 특점 시점에서 자원에 접근되면 그 자원은 다시 참조될 확률이 높음  
-    ```
+    ```c
 	int num[10000], sum = 0, i;  
    	.....  
     for(i=0;i<10000;i++)  
@@ -74,8 +74,8 @@ System Call I/O
 * Page Writeback이 발생하는 상황
 	* 미리 정의된 메모리 양보다 페이지 캐시의 여유 메모리 공간이 줄어들 때
 	* 미리 정의된 시간보다 변경된 내용이 오래되었을 때
-* pdflush (Page Dirty FLUSH)
+* `pdflush` (Page Dirty FLUSH)
 	* 위의 두 조건 중 하나라도 만족되면 이 커널스레드가 꺠어나 page writeback 수행
-* pdflush를 통해 데이터를 적기 전에 시스템이 꺼지면?
+* `pdflush`를 통해 데이터를 적기 전에 시스템이 꺼지면?
 	* 데이터 날아감.
 
