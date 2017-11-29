@@ -1,6 +1,6 @@
 # 프로세스의 생성(fork)
 ## NAME
-fork - create a child process
+`fork` - create a child process
 ## SYNOPSIS
 ```c
 #include <sys/types.h>
@@ -8,7 +8,7 @@ fork - create a child process
 pid_t fork();
 ```
 ## RETURN VALUE
-Return
+Return  
 * Parent - Process ID of Child
 * Child - 0, -1 on error
 ## Description
@@ -27,6 +27,7 @@ Return
 ![after_fork()](./after_fork1.png?raw=true)
 * [fork function](./fork0.c)
 * `fork()`를 통해 상속되는 속성
+  * 실제
 * Parent 프로세스와 달라지는 속성
 * [fork()와 변수](./fork1.c)
 * [fork()와 파일](./fork2.c)
