@@ -13,4 +13,17 @@ Return: Not `NULL` if OK, `NULL` on error
 * `malloc()`을 통해 리턴되는 값을 캐스팅하지 않는 것을 권장
 	* `void*`는 캐스팅 할 필요 없음
 	* 캐스팅 시 위험 초래 가능성
-
+* 에러를 내부적으로 처리하는 `xmalloc()` 함수
+	* 아래 함수 사용 권장
+	```c
+	void* xmalloc(size_t size)
+	{
+		void* p;
+		p = malloc(size);
+		if(!p){
+			perror("xmalloc");
+			exit(1);
+		}
+		return p;
+	}
+	```
