@@ -11,4 +11,6 @@ Return: Not `NULL` if OK, `NULL` on error
 ## Description
 * 원하는 바이트 수 만큼을 `heap`으로부터 할당
 * `malloc()`을 통해 리턴되는 값을 캐스팅하지 않는 것을 권장
+	* `void*`는 캐스팅 할 필요 없음
+	* 캐스팅 시 위험 초래 가능성
 
