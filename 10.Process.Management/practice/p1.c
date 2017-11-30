@@ -7,26 +7,24 @@
 #include <unistd.h>
 
 int main(){
-	int lmt, i=1, sw=0, res=0;
+	int lmt, i=1, sw, res;
 	pid_t pid;
+	scanf("%d", &lmt);
 	if( (pid = fork()) > 0 ){
-		res=1;
-		scanf("%d", &lmt);
-		for(i=1;i<=lmt;i++){
+		sw=1; res=1;
+		for(i=1;i<=lmt;i++)
 			res*=i;
-		}
 	}
 	else{
-		scanf("%d", &lmt);
-		for(i=1;i<=lmt;i++){
+		sw=0; res=0;
+		for(i=1;i<=lmt;i++)
 			res+=i;
-		}
 	}
 	if(sw==0){
-
+		printf("Multiply 1 to %d => %d\n", lmt, res);
 	}
 	else{
-
+		printf("Sum 1 to %d => %d\n", lmt, res);
 	}
 	printf("pid = %d\n", getpid());
 	return 0;
