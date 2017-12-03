@@ -1,8 +1,8 @@
 # 사건 감시 (inotify)
 ## NAME
-inotify - Watch events (move, delete, read, write, ...) for files(dirs)
+`inotify` - Watch events (move, delete, read, write, ...) for files(dirs)
 ## SYNOPSIS
-```
+```c
 #include <sys/inotify.h>
 
 int inotify_init(void);
@@ -11,7 +11,7 @@ int inotify_rm_watch(int f d, uint32_t wd);
 int close(int fd);
 ```
 ## DATA STRUCTURE
-```
+```c
 struct inotify_event {
 	int wd, uint32_t mask,
 	uint32_t cookie,
