@@ -1,25 +1,25 @@
 # 08. 파일 상태 및 디렉토리
 ## Linux File의 특징
 * stat 구조체
-	* ```#include <types.h>```
-	```
-	struct stat{
-		mode_t st_mode; // file type * permission
-		ino_t st_ino;
-		nlink_t st_nlink; // link count
-		uid_t st_uid;
-		gid_t st_gid;
-		dev_t st_dev;
-		dev_t st_rdev;
-		off_t st_size;
-		time_t st_atime; // last access
-		time_t st_mtime; // last modification
-		time_t st_ctime; // last file status change
-		long st_blksize;
-		long st_blocks;
-	};
-	```
-	* 시스템에 따라서 약간의 차이 존재 가능  
+	* `#include <types.h>`
+  ```c
+  struct stat{
+  	mode_t st_mode; // file type * permission
+  	ino_t st_ino;
+  	nlink_t st_nlink; // link count
+  	uid_t st_uid;
+  	gid_t st_gid;
+  	dev_t st_dev;
+  	dev_t st_rdev;
+  	off_t st_size;
+  	time_t st_atime; // last access
+  	time_t st_mtime; // last modification
+  	time_t st_ctime; // last file status change
+  	long st_blksize;
+  	long st_blocks;
+  };
+  ```
+	* 시스템에 따라서 약간의 차이 존재 가능
 * 파일 형태
 	* 정규파일(Regular File)
 		* 데이터를 포함하는 가장 일반적인 파일 형태
@@ -63,7 +63,7 @@
 		* 파일에 대한 접근 권한을 결정
 	* set-user-ID, set-group-ID 비트
 		* 프로세스 실행 시, effective user ID값이 프로세스를 실행한 사용자의 ID(real user id)가 아니라 파일의 소유자 ID로 설정
-		* S_ISUID, S_ISGID
+		* `S_ISUID`, `S_ISGID`
 	* 일반적인 프로그램 실행 시
 		* Real user ID -> effective user ID
 		* Real group ID -> effective group ID
@@ -71,24 +71,24 @@
 		* file owner ID -> effective user ID
 		* find group owner ID -> effective group ID
 	* stat 구조체의 st_mode값과 AND 연산을 통해 비트 설정의 유무 확인 가능
-		* S_ISUID(4), S_ISGID(4)
+		* `S_ISUID(4)`, `S_ISGID(4)`
 	* 보안에 유의 필요!
 * 스티키 비트 (Sticky Bit)
 	* 파일이 존재하는 디렉토리에 접근 권한이 있다 해도 파일 삭제는 파일의 소유자만 할 수 있도록 함
 	* 공동 작업 디렉토리에서 여러 사용자가 작업할 경우 다른 사용자에 의해 파일이 삭제되는 것을 방지
-	* S_ISVTX(1)
+	* `S_ISVTX(1)`
 * 파일의 시간 정보
 	* stat 구조체의 멤버 중에는 시간 값을 가지는 세 개의 멤버가 있음
 	* 파일의 관리 및 보안에 이러한 시간 정보들이 유용하게 사용될 수 있음
 	* st_atime
 		* 파일의 데이터가 마지막으로 읽혔던 시간
-		* read() 호출
+		* `read()` 호출
 	* st_mtime
 		* 파일의 데이터가 마지막으로 변경된 시간
-		* write() 호출
+		* `write()` 호출
 	* st_ctime
 		* 파일의 stat 구조의 내용이 마지막으로 변경된 시간
-		* link(), chmod(), write() 호출
+		* `link()`, `chmod()`, `write()` 호출
 ## File Status
 * [stat_fstat_lstat](./stat_fstat_lstat)
 * [access](./access)
@@ -134,11 +134,20 @@
 			* 디렉토리 엔트리 읽기 두번
 			* 아이노드 읽기 두번
 			* 데이터 블록 읽기 두번
-## 관련 함수들
+## Hard link 관련 함수들
 * [link](./link)
 * [unlink](./unlink)
 * [remove](./remove)
 * [rename](./rename)
+## Indirect Link
+* Symbolic Link
+  * 파일의 inode를 직접 가리키는 hard link와는 달리 간접적인 포인터
+  * Hard link의 제약성을 피하기 위해 도입
+    * 동일 파일 시스템
+    * Root만이 디렉토리에 링크 사용 가능
+    * 파일이 지워지지 않을 수 있음
+  * 이름으로 파일을 참조하는 함수 사용시 주의 필요
+  ![function_follow_link_table](./function_follow_link_table.png?raw=true)
 * [symlink](./symlink)
 * [readlink](./readlink)
 * [utime](./utime)
