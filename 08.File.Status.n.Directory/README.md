@@ -146,16 +146,30 @@
     * 동일 파일 시스템
     * Root만이 디렉토리에 링크 사용 가능
     * 파일이 지워지지 않을 수 있음
-  * 이름으로 파일을 참조하는 함수 사용시 주의 필요
+  * 이름으로 파일을 참조하는 함수 사용시 주의 필요  
   ![function_follow_link_table](./function_follow_link_table.png?raw=true)
 * [symlink](./symlink)
 * [readlink](./readlink)
 * [utime](./utime)
+## 디렉토리 구조
+* Directory
+  * 파일 및 하위 디렉토리로 구성
+  * 디렉토리는 자신이 소유하는 파일과 디렉토리를 디렉토리 엔트리(entry)라 불리는 dirent 구조체로 관리
+  ```c
+  struct dirent{
+    ino_t d_ino;
+    char d_name[NAME_MAX+1];
+  };
+  ```
+  * DIR 구조체
+    * 개방된 디렉토리를 접근하는데 필요한 구조체
+    * 표준 입출력 라이브러리의 FILE 구조체와 유사
 * [mkdir, rmdir](./mkdir_rmdir)
 * [opendir, readdir](./opendir_readdir)
 * [rewinddir, closedir](./rewinddir_closedir)
 * [chdir, fchdir](./chdir_fchdir)
 * [getcwd](./getcwd)
+## 사건 감시
 * [inotify](./inotify)
 ## my_ls
 
