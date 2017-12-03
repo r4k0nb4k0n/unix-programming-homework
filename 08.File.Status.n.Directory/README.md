@@ -134,5 +134,19 @@
 			* 디렉토리 엔트리 읽기 두번
 			* 아이노드 읽기 두번
 			* 데이터 블록 읽기 두번
-## Link functions
+## 관련 함수들
+* [link](./link)
+* [unlink](./unlink)
+* [remove](./remove)
+* [rename](./rename)
+* [symlink](./symlink)
+* [readlink](./readlink)
+* [utime](./utime)
+* [mkdir, rmdir](./mkdir_rmdir)
+* [opendir, readdir](./opendir_readdir)
+* [rewinddir, closedir](./rewinddir_closedir)
+* [chdir, fchdir](./chdir_fchdir)
+* [getcwd](./getcwd)
+* [inotify](./inotify)
+## my_ls
 
