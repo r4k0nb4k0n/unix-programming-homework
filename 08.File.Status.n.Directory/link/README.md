@@ -18,4 +18,4 @@ Return: 0 if OK, -1 on error
 * 디렉토리에 대한 `link()` call은 root만 사용 가능
 * 서로 다른 파일 시스템간의 링크는 허용하지 않음
 * Link Count
-![link_count](./link_count.png?raw=true)
+* ![link_count](./link_count.png?raw=true)
