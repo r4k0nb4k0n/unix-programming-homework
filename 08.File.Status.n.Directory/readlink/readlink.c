@@ -6,9 +6,9 @@
 
 int  main(int argc, char *argv[])
 {
-     struct  stat     sb;
-     char                *linkname;
-     ssize_t            r;
+     struct  stat   sb;
+     char           *linkname;
+     ssize_t        r;
 
      if (argc != 2) {
          fprintf(stderr, "Usage: %s <pathname>\n",
