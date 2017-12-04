@@ -1,15 +1,15 @@
 # File Status
 ## NAME
-access - check user's permissions for a file
+`access` - check user's permissions for a file
 ## SYNOPSIS
-```
+```c
 #include <unistd.h>
 int access(const char *pathname, int mode);
 ```
 ## RETURN VALUE
-Return : 0 if OK, -1 on error
+Return : `0` if OK, `-1` on error
 ## Description
-* access
+* `access`
 	* pathname : 파일 경로 이름
 	* mode : 검사하고자 하는 permission 값  
 	![access_mode](./access_mode.png?raw=true)
