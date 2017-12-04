@@ -171,5 +171,5 @@
 * [getcwd](./getcwd)
 ## 사건 감시
 * [inotify](./inotify)
-## my_ls
+## [실습 과제](./my_ls)
 
