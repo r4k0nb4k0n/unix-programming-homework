@@ -10,8 +10,13 @@
 	* 가상 주소 공간의 기본 구성 요소
 	* 보통 `4KB` or `8KB`. (CPU에 따라 크기를 임의로 설정할 수 있음)
 	* 유효 페이지와 유효하지 않은 페이지로 나뉨
+		* 물리 메모리에 존재하거나 스왑 파티션에 존재하면 유효함
+		* 유효하지 않은 메모리에 접근하면 세그멘테이션 폴트 발생
 * 페이지 프레임(Page Frame)
+	* 물리 메모리의 공간으로 페이지와 대응됨
 * 페이지 테이블(Page Table)
+	* 가상 주소 공간의 페이지가 실제 물리적으로 어디에 위치하는지를 나타냄
+	* 운영체제 프로그래머는 페이지 테이블만 구축해 놓으면 컴퓨터 시스템이 MMU(Memory Management unit)이라는 하드웨어를 통해 물리 메모리로 접근  
 ![process-address-space](./process_address_space.png?raw=true)
 ## Share, Copy-On-Write
 ![share, copy-on-write](./share_copy_on_write.png?raw=true)
@@ -19,7 +24,7 @@
 ![memory area](./memory_area.png?raw=true)
 ## 메모리 관련 함수들
 * [동적 메모리 할당하기](./malloc)
-* [배열 할당하기](./calloc)i
+* [배열 할당하기](./calloc)
 ## 메모리 정렬
 * 정렬된 상태
 * 시스템의 성능을 위해서 메모리 정렬은 매우 중요
