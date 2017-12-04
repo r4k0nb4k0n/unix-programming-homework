@@ -1,11 +1,13 @@
 # 비트 연산 실습 1
 * `unsigned int` 변수에 플래그 설정 예제
 * 다음의 매크로 이용
-  * `#define OPEN    1`
-  * `#define READ    2`
-  * `#define WRITE   4`
-  * `#define LSEEK   8`
-  * `#define CLOSE  16`
+```c
+#define OPEN    1
+#define READ    2
+#define WRITE   4
+#define LSEEK   8
+#define CLOSE  16
+```
 * `main()`안에 `unsigned int flag` 변수 선언할 것
 * 아래의 함수 작성
   * `clear_flag(unsigned int* p_flag, unsigned int opt)`
