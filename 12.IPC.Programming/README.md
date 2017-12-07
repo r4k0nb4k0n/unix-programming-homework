@@ -102,6 +102,6 @@
 * [sigprocmask function](./sigprocmask)
 * [sigpending function](./sigpending)
 * [SIGSUSPEND function](./sigsuspend)
-* [Race Condition 없는 `SIGALRM`](./norace_alm.c)
+* [Race Condition 없는 `SIGALRM`](./sigsuspend/norace_alm.c)
 ## Pipe
 
