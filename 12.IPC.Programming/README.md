@@ -96,6 +96,8 @@
 	- [sig_parent.c](./sig_parent.c), [sig_child.c](./sig_child.c)
 * [alarm function](./alarm)
 * [pause function](./pause)
+* alarm, pause function
+	- [alarm.c](./alarm_pause.c)
 * [Signal set](./signal_set)
 * [sigprocmask function](./sigprocmask)
 * [sigpending function](./sigpending)
