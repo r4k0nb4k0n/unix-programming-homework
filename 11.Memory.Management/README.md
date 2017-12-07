@@ -26,6 +26,7 @@
 * [동적 메모리 할당하기](./malloc)
 * [배열 할당하기](./calloc)
 * [할당 크기 조정](./realloc)
+* [동적 메모리 해제하기](./free)
 ## 메모리 정렬
 * 정렬된 상태
 	* 메모리 블록(워드)의 배수가 되는 메모리 주소에 위치한 변수나 데이터를 지칭
@@ -53,4 +54,25 @@
 * 배열 정렬 요구 사항
 	* 기본 타입을 따름
 	* 하드웨어에 따라 자연스럽게 정렬됨
+## 포인터 타입 변환 시 주의할 점
+* 작은 타입의 데이터에서 큰 타입의 데이터로 접근할 경우 문제 발생 가능
+```c
+// mem_err.c
+#include <stdio.h>
+int main(void)
+{
+	char* greeting = "Hello World";
+	char* c = &greeting[1];
+	unsigned long badnews = *(unsigned long*)c;
 
+	printf("%ld\n", badnews);
+
+	return 0;
+}
+```
+* 메모리 주소가 alignment가 되어있지 않은 경우, 특정 아키텍처의 CPU는 이 프로그램을 실행할 수 없다.
+## 메모리 관련 함수들
+* [익명 메모리 사상](./mmap_munmap)
+* [스택에서 메모리 할당](./alloca)
+* [스택에 문자열 복사](./strdupa_strndupa)
+*
