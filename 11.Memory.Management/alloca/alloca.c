@@ -11,7 +11,7 @@ int main(void) {
 	strcpy(name, etc);
 	strcat(name, file);
 
-	printf("%s", name);
+	printf("%s\n", name);
 
 	return 0;
 }
