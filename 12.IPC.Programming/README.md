@@ -104,4 +104,11 @@
 * [SIGSUSPEND function](./sigsuspend)
 * [Race Condition 없는 `SIGALRM`](./sigsuspend/norace_alm.c)
 ## Pipe
-
+* Pipe?
+  - 한 프로세스의 표준 출력을 다른 프로세스의 표준 입력에 연결
+  - 주로 부모/자식 혹은 동일한 부모의 자식 프로세스 사이의 통신을 위함
+  - 프로세스 간 단방향 통신의 한 방법
+  - 동기화를 기본적으로 제공
+  - 가득 차거나 비어 있을 때 자동으로 block
+## Pipe 생성
+* [pipe](./pipe)
