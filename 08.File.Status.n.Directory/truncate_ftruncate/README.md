@@ -14,6 +14,6 @@ Return : `0` if OK, `-1` on error
 * `truncate`
 * `ftruncate`
 * 기존의 파일을 length 바이트로 잘라낸다.
-* 만약 이전 파일의 크기가 length보다 작았으면?
+* 만약 이전 파일의 크기가 length보다 작았으면? => length 바이트가 될 때까지 데이터를 채운다.
 	* Hole(윈도우 계열에서는 sparse) file 생성
 
