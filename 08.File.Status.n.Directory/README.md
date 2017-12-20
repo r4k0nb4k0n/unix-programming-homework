@@ -4,19 +4,24 @@
 	* `#include <types.h>`
   ```c
   struct stat{
-  	mode_t st_mode; // file type * permission
-  	ino_t st_ino;
-  	nlink_t st_nlink; // link count
-  	uid_t st_uid;
-  	gid_t st_gid;
-  	dev_t st_dev;
-  	dev_t st_rdev;
-  	off_t st_size;
-  	time_t st_atime; // last access
-  	time_t st_mtime; // last modification
-  	time_t st_ctime; // last file status change
-  	long st_blksize;
-  	long st_blocks;
+  	mode_t st_mode;   // Mode of file. type, permission, etc.
+  	ino_t st_ino;     // File serial number.
+  	nlink_t st_nlink; // Number of hard links to the file.
+  	uid_t st_uid;     // User ID of file.
+  	gid_t st_gid;     // Group ID of file.
+  	dev_t st_dev;     // Device ID of device containing file.
+  	dev_t st_rdev;    // Device ID (if file is character or block special).
+  	off_t st_size;    // For regular files, the file size in bytes.
+					  // For symbolic links, the length in bytes of the pathname contained in the symbolic link.
+					  // For a shared memory object, the length in bytes.
+					  // For a typed memory object, the length in bytes.
+					  // For other file types, the use of this filed is unspecified.
+  	time_t st_atime;  // Time of last access.
+  	time_t st_mtime;  // Time of last data modification.
+  	time_t st_ctime;  // Time of last file status change.
+  	long st_blksize;  // A file system-specific preferred I/O block size for this object.
+					  // In some file system types, this may vary from file to file.
+  	long st_blocks;   // Number of blocks allocated for this object.
   };
   ```
 	* 시스템에 따라서 약간의 차이 존재 가능
