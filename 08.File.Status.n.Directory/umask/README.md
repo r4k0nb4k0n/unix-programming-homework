@@ -1,6 +1,6 @@
 # File Masking
 ## NAME
-`umask` -
+`umask` - It determines the settings of a mask that controls how file permissions are set for newly created files.
 ## SYNOPSIS
 ```c
 #include <sys/types.h>
