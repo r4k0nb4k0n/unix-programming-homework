@@ -14,9 +14,9 @@
 #define EOL	1
 #define ARG	2
 #define AMPERSAND 3
-#define LESSTHAN 4
-#define MORETHAN 5
-#define PIPE 6
+#define RDIN 4 // '<'
+#define RDOT 5 // '>'
+#define PIPE 6 // '|'
 
 #define FOREGROUND 0
 #define BACKGROUND 1
@@ -81,7 +81,7 @@ int parse_and_execute(char *input)
 	int	 finished = FALSE;
 
 	ptr = input;
-	tok = tokens;
+	tok = tokewns;
 	while (!finished) {
 		switch (type = get_token(&arg[narg])) {
 		case ARG :
@@ -202,8 +202,6 @@ int parse_and_execute(char *input)
 	return quit;
 }
 
-
-
 main()
 {
     char *arg[1024];
@@ -216,5 +214,3 @@ main()
 		printf("msh # ");
 	}
 }
-
-
