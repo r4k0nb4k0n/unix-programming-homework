@@ -14,7 +14,6 @@ stdout
 tty
 tty0
 tty1
-tty2
 ttyS0
 ttyS1
 ttyS10
