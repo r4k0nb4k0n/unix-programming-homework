@@ -14,9 +14,9 @@
 #define EOL	1
 #define ARG	2
 #define AMPERSAND 3
-#define RDIN 4 // '<'
-#define RDOT 5 // '>'
-#define PIPE 6 // '|'
+#define RDIN  4 // '<'
+#define RDOUT 5 // '>'
+#define PIPE  6 // '|'
 
 #define FOREGROUND 0
 #define BACKGROUND 1
@@ -37,8 +37,8 @@ int get_token(char **outptr)
 	switch (*ptr++) {
 		case '\0' : type = EOL; break;
 		case '&': type = AMPERSAND; break;
-		case '<': type = LESSTHAN; break;
-		case '>': type = MORETHAN; break;
+		case '<': type = RDIN; break;
+		case '>': type = RDOUT; break;
 		case '|': type = PIPE; break;
 		default : type = ARG;
 			while ((*ptr != ' ') && (*ptr != '&') &&
@@ -81,7 +81,7 @@ int parse_and_execute(char *input)
 	int	 finished = FALSE;
 
 	ptr = input;
-	tok = tokewns;
+	tok = tokens;
 	while (!finished) {
 		switch (type = get_token(&arg[narg])) {
 		case ARG :
@@ -121,84 +121,87 @@ int parse_and_execute(char *input)
 			if (type == EOL)
 				finished = TRUE;
 			break; 
-		case LESSTHAN:
+		case RDIN:
 			if(narg > 1){
-				int pid1;
-				int fd;
+        int pid1;
+        int fd;
+        int status;
 
-				pid1 = fork();
-				if (pid1 == 0) { /* child */
-					fd = open(arg[2], O_RDWR | O_CREAT | S_IROTH, 0644);
-					if(fd < 0){
-						perror("error");
-						exit(-1);
-					}
-					dup2(fd, STDOUT_FILENO);
-					close(fd);
-					exec(arg[0], ...);
-					exit(0);
-				}
-
-				/* Parent: Shell */
-				wait();
-			}
-			break;	
-		case MORETHAN:
+        pid1 = fork();
+        if(pid1 == 0) { /* child */
+          fd = open(arg[2], O_RDONLY);
+          if(fd < 0) {
+            perror("error");
+            exit(-1);
+          }
+          dup2(fd, STDIN_FILENO);
+          close(fd);
+          execl(arg[0], arg[0], (char*)0);
+          exit(0);
+        }
+        /* Parent: Shell */
+        wait(&status);
+      }
+      break;	
+		case RDOUT:
 			if(narg > 1){
-				int pid1;
-				int fd;
-	
-				pid1 = fork();
-				if(pid1 == 0) { /* child */
-					fd = open(arg[2], O_RDONLY);
-					if(fd < 0) {
-						perror("error");
-						exit(-1);
-					}
-					dup2(fd, STDIN_FILENO);
-					close(fd);
-					exec(arg[0], ...);
-					exit(0);
-				}
-	
-				/* Parent: Shell */
-				wait();
-			}
-			break;
-		case PIPE: 
-			if(narg > 1){
-				int fd[2];
-				int pid1, pid2;
+        int pid1;
+        int fd;
+        int status;
 
-				pipe(p);
-	
-				pid1 = fork();
-				if (pid1 == 0) { /* First child */
-					dup2(fd[1], STDOUT_FILENO);
-					close(fd[0]);
-					close(fd[1]);
-					exec(arg[0], ...);
-				}
-	
-				/* Parent: Shell */
-				
-				pid2 = fork();
-				if (pid == 0) { /* Second child */
-					dup2(fd[0], STDIN_FILENO);
-					close(fd[0]);
-					close(fd[1]);
-					exec(arg[2], ...);
-				}
-	
-				close(fd[0]);
-				close(fd[1]);
-				
-				/* Parent: Shell */
-				wait();
-			}
-			break;
-		}
-	}
+        pid1 = fork();
+        if(pid1 == 0) { /* child */
+          fd = open(arg[2], O_RDWR | O_CREAT | S_IROTH, 0644);
+          if(fd < 0) {
+            perror("error");
+            exit(-1);
+          }
+          dup2(fd, STDOUT_FILENO);
+          close(fd);
+          execl(arg[0], arg[0], (char*)0);
+          exit(0);
+        }
+        /* Parent: Shell */
+        wait(&status);
+      }
+      break;
+		case PIPE:
+      if(narg > 1){
+        int fd[2];
+        int pid1, pid2;
+        int status;
+  
+        pipe(fd);
+  
+        pid1 = fork();
+  
+        if(pid1 == 0) {
+          dup2(fd[1], STDOUT_FILENO);
+          close(fd[0]);
+          close(fd[1]);
+          execl(arg[0], arg[0], (char*)0);
+        }
+  
+        /* Parent: Shell */
+  
+        pid2 = fork();
+  
+        if(pid2 == 0) {
+          dup2(fd[0], STDIN_FILENO);
+          close(fd[0]);
+         close(fd[1]);
+          execl(arg[2], arg[2], (char*)0);
+        }
+  
+        close(fd[0]);
+        close(fd[1]);
+  
+        /* Parent: Shell */
+        wait(&status);
+      }
+      break;
+    }
+  }
 	return quit;
 }
 
