@@ -14,9 +14,9 @@
 #define EOL	1
 #define ARG	2
 #define AMPERSAND 3
-#define RDIN  4 // '<'
-#define RDOUT 5 // '>'
-#define PIPE  6 // '|'
+#define RDIN  4 // '<' Redirection In.
+#define RDOUT 5 // '>' Redirection Out.
+#define PIPE  6 // '|' Pipe.
 
 #define FOREGROUND 0
 #define BACKGROUND 1
@@ -79,125 +79,120 @@ int parse_and_execute(char *input)
 	int	 quit = FALSE;
 	int	 narg = 0;
 	int	 finished = FALSE;
+  int  pid[2], p[2];
+  int  fd;
+  int  status;
 
 	ptr = input;
 	tok = tokens;
 	while (!finished) {
 		switch (type = get_token(&arg[narg])) {
-		case ARG :
-			narg++;
-			break;
-		case EOL :
-		case AMPERSAND:
-			if (!strcmp(arg[0], "quit")) quit = TRUE;
-			else if (!strcmp(arg[0], "exit")) quit = TRUE;
-			else if (!strcmp(arg[0], "cd")) chdir(arg[1]); // cd 기능 구현
-			else if (!strcmp(arg[0], "type")) {
-				if (narg > 1) {
-					int	 i, fid;
-					int	 readcount;
-					char buf[512];
-					fid = open(arg[1], O_RDONLY);
-					if (fid >= 0) {
-						readcount = read(fid, buf, 512);
-						while (readcount > 0) {
-							for (i = 0; i < readcount; i++)
-								putchar(buf[i]);
-							readcount = read(fid, buf, 512);
-						}
-					}
-					close(fid);
-				}
-			}
-			else {
-				how = (type == AMPERSAND) ? BACKGROUND : FOREGROUND;
-				arg[narg] = NULL;
-				if (narg != 0)
-					execute(arg, how);
-			}
-			narg = 0;
-			if (type == EOL)
-				finished = TRUE;
-			break; 
-		case RDIN:
-			if(narg > 1){
-        int pid1;
-        int fd;
-        int status;
-
-        pid1 = fork();
-        if(pid1 == 0) { /* child */
+  		case ARG :
+  			narg++;
+  			break;
+  		case EOL :
+  		case AMPERSAND:
+  			if (!strcmp(arg[0], "quit")) quit = TRUE;
+  			else if (!strcmp(arg[0], "exit")) quit = TRUE;
+  			else if (!strcmp(arg[0], "cd")) chdir(arg[1]); // cd 기능 구현
+  			else if (!strcmp(arg[0], "type")) {
+  				if (narg > 1) {
+  					int	 i, fid;
+  					int	 readcount;
+  					char buf[512];
+  					fid = open(arg[1], O_RDONLY);
+  					if (fid >= 0) {
+  						readcount = read(fid, buf, 512);
+  						while (readcount > 0) {
+  							for (i = 0; i < readcount; i++)
+  								putchar(buf[i]);
+  							readcount = read(fid, buf, 512);
+  						}
+  					}
+  					close(fid);
+  				}
+  			}
+  			else {
+  				how = (type == AMPERSAND) ? BACKGROUND : FOREGROUND;
+  				arg[narg] = NULL;
+  				if (narg != 0)
+  					execute(arg, how);
+  			}
+  			narg = 0;
+  			if (type == EOL)
+  				finished = TRUE;
+  			break; 
+  		case RDIN:
+        type = get_token(&arg[++narg]); 
+        pid[0] = fork();
+        if(pid[0] < 0){ /* Handling fork() error */
+          perror("minish: fork error");
+          exit(-1);
+        }
+        else if(pid[0] == 0) { /* child */
           fd = open(arg[2], O_RDONLY);
           if(fd < 0) {
-            perror("error");
+            perror("minish: open error");
             exit(-1);
           }
           dup2(fd, STDIN_FILENO);
           close(fd);
-          execl(arg[0], arg[0], (char*)0);
-          exit(0);
+          execlp(arg[0], arg[0], (char*)0);
+          perror("minish: command not found"); exit(-1);
         }
-        /* Parent: Shell */
-        wait(&status);
-      }
-      break;	
-		case RDOUT:
-			if(narg > 1){
-        int pid1;
-        int fd;
-        int status;
-
-        pid1 = fork();
-        if(pid1 == 0) { /* child */
+        else if(pid[0] > 0) { /* Parent: Shell */
+          wait(&status);
+          return quit=FALSE;
+        }
+        break;
+  		case RDOUT:
+        type = get_token(&arg[++narg]); 
+        pid[0] = fork();
+        if(pid[0] < 0){ /* Handling fork() error */
+          perror("minish: fork error");
+          exit(-1);
+        }
+        else if(pid[0] == 0) { /* child */
           fd = open(arg[2], O_RDWR | O_CREAT | S_IROTH, 0644);
           if(fd < 0) {
-            perror("error");
+            perror("minish: open error");
             exit(-1);
           }
           dup2(fd, STDOUT_FILENO);
           close(fd);
-          execl(arg[0], arg[0], (char*)0);
-          exit(0);
+          execlp(arg[0], arg[0], (char*)0);
+          perror("minish: command not found"); exit(-1);
         }
-        /* Parent: Shell */
-        wait(&status);
-      }
-      break;
-		case PIPE:
-      if(narg > 1){
-        int fd[2];
-        int pid1, pid2;
-        int status;
-  
-        pipe(fd);
-  
-        pid1 = fork();
-  
-        if(pid1 == 0) {
-          dup2(fd[1], STDOUT_FILENO);
-          close(fd[0]);
-          close(fd[1]);
-          execl(arg[0], arg[0], (char*)0);
+        else if(pid[0] > 0) { /* Parent: Shell */
+          wait(&status);
+          return quit=FALSE;
         }
-  
+        break;
+  		case PIPE:
+        pipe(p);
+        pid[0] = fork();
+        if(pid[0] == 0) {
+          dup2(p[1], STDOUT_FILENO);
+          close(p[0]); close(p[1]);
+          execl(arg[0], arg[0], (char*)0);
+          perror("minish: first command not found"); exit(-1);
+        }
+        
         /* Parent: Shell */
-  
-        pid2 = fork();
-  
-        if(pid2 == 0) {
-          dup2(fd[0], STDIN_FILENO);
-          close(fd[0]);
-         close(fd[1]);
+        
+        pid[1] = fork();
+        if(pid[1] == 0) {
+          dup2(p[0], STDIN_FILENO);
+          close(p[0]); close(p[1]);
           execl(arg[2], arg[2], (char*)0);
+          perror("minish: second command not found"); exit(-1);
         }
-  
-        close(fd[0]);
-        close(fd[1]);
+    
+        close(p[0]); close(p[1]);
   
         /* Parent: Shell */
         wait(&status);
-      }
-      break;
+        break;
     }
   }
 	return quit;
@@ -205,7 +200,7 @@ int parse_and_execute(char *input)
 
 main()
 {
-    char *arg[1024];
+  char *arg[1024];
 	int	 quit;
 
 	printf("msh # ");
