@@ -91,9 +91,7 @@ int parse_and_execute(char *input)
 		case AMPERSAND:
 			if (!strcmp(arg[0], "quit")) quit = TRUE;
 			else if (!strcmp(arg[0], "exit")) quit = TRUE;
-			else if (!strcmp(arg[0], "cd")) {
-				/* Do something */
-			}
+			else if (!strcmp(arg[0], "cd")) chdir(arg[1]); // cd 기능 구현
 			else if (!strcmp(arg[0], "type")) {
 				if (narg > 1) {
 					int	 i, fid;
