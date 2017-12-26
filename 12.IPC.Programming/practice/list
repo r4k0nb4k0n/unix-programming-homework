@@ -1,5 +1,5 @@
   PID TTY          TIME CMD
     2 tty1     00:00:00 bash
     7 tty1     00:00:02 zsh
-  128 tty1     00:00:00 msh
-  157 tty1     00:00:00 ps
+  213 tty1     00:00:00 msh
+  225 tty1     00:00:00 ps
